@@ -1,12 +1,14 @@
+package com.halukkilincer.adventure.items;
 
-public class Inventory extends Player {
 
-	private boolean dungeonKey,charHelmet,charBodyArmour,
-	charPantsArmour,charBootsArmour,charGlovesArmour,charWeapon;
-	private int potionHP,damage,armour;
-	
+public class Inventory  {
+
+	private boolean dungeonKey, charHelmet, charBodyArmour, charPantsArmour, charBootsArmour, charGlovesArmour,
+			charWeapon;
+	private int potionHP, damage, armour;
+
 	public Inventory() {
-		
+
 		this.dungeonKey = false;
 		this.charHelmet = false;
 		this.charBodyArmour = false;
@@ -98,6 +100,5 @@ public class Inventory extends Player {
 	public void setArmour(int armour) {
 		this.armour = armour;
 	}
-	
-	
+
 }
