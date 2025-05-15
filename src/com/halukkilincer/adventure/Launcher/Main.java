@@ -35,8 +35,8 @@ public class Main {
 		gameFrame.requestFocus();
 		gameFrame.setFocusTraversalKeysEnabled(false);
 		gameFrame.startGame();
-*/
 
+*/
 
 	}
 

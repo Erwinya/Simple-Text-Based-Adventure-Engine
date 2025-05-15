@@ -6,9 +6,9 @@ public class Player {
 
 	private int damage, health, defense, firstHealth;
 	private String name, charName;
-	private Inventory inventory;
-	private int initialMoney = 50;
-
+	private Inventory inventory = new Inventory();
+	private int initialMoney = 750;
+	private int Money = initialMoney;
 	public void initializeCharacter() throws InterruptedException {
 		switch (this.getCharName()) {
 
@@ -42,7 +42,17 @@ public class Player {
 		}
 		Thread.sleep(3000);
 	}
-
+	public int getTotalDamage() {
+		setDamage(getDamage()+getInventory().getCharWeapon());
+		return damage;
+		 
+	}public int getTotalDefense() {
+		setDefense(getDefense()+getInventory().getCharBodyArmour());
+		
+		return defense;
+		
+		
+	}
 	private void setStats(int damage, int health, int defense) {
 		this.damage = damage;
 		this.health = health;
@@ -66,12 +76,12 @@ public class Player {
 		this.health = health;
 	}
 
-	public int getDefance() {
+	public int getDefense() {
 		return defense;
 	}
 
-	public void setDefance(int defance) {
-		this.defense = defance;
+	public void setDefense(int defense) {
+		this.defense = defense;
 	}
 
 	public String getName() {
@@ -112,6 +122,14 @@ public class Player {
 
 	public void setMoneyStart(int moneyStart) {
 		this.initialMoney = moneyStart;
+	}
+
+	public int getMoney() {
+		return Money;
+	}
+
+	public void setMoney(int money) {
+		Money = money;
 	}
 
 }
