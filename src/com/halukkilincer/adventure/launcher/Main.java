@@ -1,4 +1,4 @@
-package com.halukkilincer.adventure.Launcher;
+package com.halukkilincer.adventure.launcher;
 
 import com.halukkilincer.adventure.engine.Game;
 import com.halukkilincer.adventure.ui.GameFrame;

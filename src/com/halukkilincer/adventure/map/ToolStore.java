@@ -1,6 +1,8 @@
-package com.halukkilincer.adventure.utils;
+package com.halukkilincer.adventure.map;
 
 import com.halukkilincer.adventure.characters.Player;
+import com.halukkilincer.adventure.utils.NormalLoc;
+
 import java.util.Scanner;
 
 public class ToolStore extends NormalLoc {
@@ -9,7 +11,7 @@ public class ToolStore extends NormalLoc {
 
     public ToolStore(Player player, String name) {
         super(player,  player.getName());
-        
+        ///2 DEFA GIRILDIGI ZAMAN DONGUDEN CIKIYOR MENUYE DONMUYOR !!!!
     }
 
     @Override
@@ -26,7 +28,7 @@ public class ToolStore extends NormalLoc {
                         + "\nAetherianın son yüce kahramanı " + getPlayer().getName());
                 Thread.sleep(1500);
                
-                if (getPlayer().getCharName().equals("warrior")) {
+                if (getPlayer().getCharName().equals("savaşçı")) {
 					System.out.println(weaponMenuForWarrior());
 					System.out.print("Tercihin nedir? : ");
 					String choiceWeaponString = scanner.nextLine();
@@ -125,7 +127,7 @@ public class ToolStore extends NormalLoc {
 					default->
 						System.out.println("Hatalı tuşlama yaptınız");					}
 					
-				}else if (getPlayer().getCharName().equals("rogue")) {
+				}else if (getPlayer().getCharName().equals("suikastçı")) {
 					System.out.println(weaponMenuForRogue());
 					System.out.print("Tercihin nedir? : ");
 					String choiceWeaponString = scanner.nextLine();
@@ -223,7 +225,7 @@ public class ToolStore extends NormalLoc {
 					default->
 						System.out.println("Hatalı tuşlama yaptınız");					}
 					
-				}else if (getPlayer().getCharName().equals("magician")) {
+				}else if (getPlayer().getCharName().equals("büyücü")) {
 					System.out.println(weaponMenuForMagician());
 					System.out.print("Tercihin nedir? : ");
 					String choiceWeaponString = scanner.nextLine();
@@ -316,7 +318,7 @@ public class ToolStore extends NormalLoc {
 					
 					default->
 						System.out.println("Hatalı tuşlama yaptınız");					}
-				}else if (getPlayer().getCharName().equals("priest")) {
+				}else if (getPlayer().getCharName().equals("şifacı")) {
 					System.out.println(weaponMenuForPriest());
 					System.out.print("Tercihin nedir? : ");
 					String choiceWeaponString = scanner.nextLine();
@@ -414,7 +416,7 @@ public class ToolStore extends NormalLoc {
             case "2": {
                 System.out.println("Elimizde olan zırhları senin için hazırladık. Istediğini seçebilirsin "
                         + "Aetherianın son yüce kahramanı" + getPlayer().getName());
-                if (getPlayer().getCharName().equals("warrior")) {
+                if (getPlayer().getCharName().equals("savaşçı")) {
 					System.out.println(armourMenuForWarrior());
 					System.out.print("Tercihin nedir? : ");
 					String choiceArmourString = scanner.nextLine();
@@ -506,7 +508,7 @@ public class ToolStore extends NormalLoc {
 					
 					default->
 						System.out.println("Hatalı tuşlama yaptınız");					}
-				}else if (getPlayer().getCharName().equals("rogue")) {
+				}else if (getPlayer().getCharName().equals("suikastçı")) {
 					System.out.println(armourMenuForRogue());
 					System.out.print("Tercihin nedir? : ");
 					String choiceArmourString = scanner.nextLine();
@@ -597,7 +599,7 @@ public class ToolStore extends NormalLoc {
 					
 					default->
 						System.out.println("Hatalı tuşlama yaptınız");					}
-				}else if (getPlayer().getCharName().equals("magician")) {
+				}else if (getPlayer().getCharName().equals("büyücü")) {
 					System.out.println(armourMenuMagician());
 					System.out.print("Tercihin nedir? : ");
 					String choiceArmourString = scanner.nextLine();
@@ -688,7 +690,7 @@ public class ToolStore extends NormalLoc {
 					
 					default->
 						System.out.println("Hatalı tuşlama yaptınız");					}
-				}else if (getPlayer().getCharName().equals("priest")) {
+				}else if (getPlayer().getCharName().equals("şifacı")) {
 					System.out.println(armourMenuPriest());
 					System.out.print("Tercihin nedir? : ");
 					String choiceArmourString = scanner.nextLine();

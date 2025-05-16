@@ -1,8 +1,9 @@
 package com.halukkilincer.adventure.engine;
 import com.halukkilincer.adventure.characters.Player;
-import com.halukkilincer.adventure.utils.SafeHouse;
-import com.halukkilincer.adventure.utils.ToolStore;
-import com.halukkilincer.adventure.Launcher.Main;
+import com.halukkilincer.adventure.launcher.Main;
+import com.halukkilincer.adventure.map.SafeHouse;
+import com.halukkilincer.adventure.map.ToolStore;
+
 import java.util.Scanner;
 
 public class Game implements AutoCloseable {
@@ -29,15 +30,16 @@ public class Game implements AutoCloseable {
 		System.out.print("Bir zamanlar Aetheria adlı kadim topraklarda, dört kahraman, "
 				+ "dünyanın kaderini değiştirecek bir yolculuğa çıkmaya ant içmişti.\r\n" +
 
-				"\t Warrior (HP:1500 Def:750 Attack:3100)\n"
+				"\t Savaşçı (HP:1500 Def:750 Attack:3100)\n"
 				+ "Demir zırhı ve devasa baltasıyla, düşman ordularını tek başına devirebilecek kadar kudretliydi.\n"
 				+ "Onun gücü, savaş meydanında yankılanan öfkeli kükreyişinde saklıydı.\n"
-				+ "\t Rogue (HP:1200 Def:450 Attack:4200)\n"
+				+ "\t Suikastçı (HP:1200 Def:450 Attack:4200)\n"
 				+ "Gölgelerin ustasıydı. Hızlı ve sessiz hareketleriyle düşmanlarını farkına varmadan saf dışı bırakırdı.\n "
 				+ "Dagger'larının soğuk çeliği, bir anlık tereddütü bile affetmezdi.\n"
-				+ "\t Magician (HP:800 Def:250 Attack:5500)\n"
+				+ "\t Büyücü (HP:800 Def:250 Attack:5500)\n"
 				+ "Kadim büyülerin sırlarını keşfetmişti. Ateş fırtınaları yaratabilir, düşmanlarını dondurabilir ya da zamanı yavaşlatabilirdi.\n "
-				+ "Onun gücü, bilgelik ve sezgiyle besleniyordu.\n" + "\t Priest (HP:1700 Def:850 Attack:2300)\n"
+				+ "Onun gücü, bilgelik ve sezgiyle besleniyordu.\n" 
+				+ "\t Şifacı (HP:1700 Def:850 Attack:2300)\n"
 				+ "Kutsal ışığın savaşçısıydı. Yaralıları iyileştirir, lanetleri bozar ve müttefiklerini korurdu.\n "
 				+ "Ona dokunan her varlık, içindeki iyiliğin sıcaklığını hissederdi.\r\n"
 				+ "Bir gün, Void Lord adlı karanlık bir varlık Aetheria’yı yok etmeye ant içti. Kutsal Ebedi Kristal, "
@@ -53,8 +55,8 @@ public class Game implements AutoCloseable {
 			String selectCharInput = scanner.nextLine();
 			String eLCase = selectCharInput.toLowerCase();
 
-			if (eLCase.equals("warrior") || eLCase.equals("rogue") || eLCase.equals("magician")
-					|| eLCase.equals("priest")) {
+			if (eLCase.equals("savaşçı") || eLCase.equals("suikastçı") || eLCase.equals("büyücü")
+					|| eLCase.equals("şifacı")) {
 				player.setCharName(eLCase);
 
 				System.out.println("Karakteriniz hazırlanıyor...");
@@ -186,4 +188,9 @@ public class Game implements AutoCloseable {
 		if (scanner != null) {
 			scanner.close();
 		}
-	}}
+	}
+	
+}
+
+
+

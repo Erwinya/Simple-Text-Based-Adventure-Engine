@@ -12,26 +12,26 @@ public class Player {
 	public void initializeCharacter() throws InterruptedException {
 		switch (this.getCharName()) {
 
-		case "warrior" -> {
+		case "savaşçı" -> {
 
 			setStats(3100, 1500, 750);
 			System.out.println(this.charName + " baltasını sıkıca kavradı. Gücü, sadece kaslarında değil, "
 					+ "yüreğindeki sarsılmaz inançtaydı." + "\n\tAttack :   " + this.damage + "\n\tHP      :  "
 					+ this.health + "\n\tDefance :  " + this.defense);
 		}
-		case "rogue" -> {
+		case "suikastçı" -> {
 			setStats(4200, 1200, 450);
 			System.out.println(this.charName + " sessizliği bir silah gibi kullanıyordu. "
 					+ "Bir anlık tereddüt bile düşmanına ölüm getirebilirdi." + "\n\tAttack :   " + this.damage
 					+ "\n\tHP      :  " + this.health + "\n\tDefance :  " + this.defense);
 		}
-		case "magician" -> {
+		case "büyücü" -> {
 			setStats(5500, 800, 250);
 			System.out.println(this.charName + " kadim rünleri fısıldayarak ellerinde alevler dans ettiriyordu. "
 					+ "Gökyüzünü yaracak bir güçle, savaşın kaderini değiştirebilirdi." + "\n\tAttack :   "
 					+ this.damage + "\n\tHP      :  " + this.health + "\n\tDefance :  " + this.defense);
 		}
-		case "priest" -> {
+		case "şifacı" -> {
 			setStats(2300, 1700, 850);
 			System.out.println(this.charName + " müttefiklerinin son umudu olmuştu. "
 					+ "Şifalı büyüleriyle yaraları sarıyor, lanetleri yok ediyordu." + "\n\tAttack :   " + this.damage

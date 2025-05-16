@@ -1,7 +1,10 @@
-package com.halukkilincer.adventure.utils;
-import com.halukkilincer.adventure.characters.Player;
-public class SafeHouse extends NormalLoc {
+package com.halukkilincer.adventure.map;
+import java.util.Scanner;
 
+import com.halukkilincer.adventure.characters.Player;
+import com.halukkilincer.adventure.utils.NormalLoc;
+public class SafeHouse extends NormalLoc {
+	Scanner scanner = new Scanner(System.in);
 	private final int getFirstHealth = getPlayer().getFirstHealth();
 
 	public SafeHouse(Player player, String name) {
