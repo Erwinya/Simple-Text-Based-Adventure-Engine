@@ -1,8 +1,23 @@
 package com.halukkilincer.adventure.utils;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 import com.halukkilincer.adventure.characters.Player;
+import com.halukkilincer.adventure.utils.monsters.*;
+
 
 public abstract class BattleLoc extends Location {
 	Obstacle obstacle;
+	/*
+private static final List<EasyLevelMonster> MONSTER_LIST = List.of(
+    new EasyLevelMonster_1(),
+    new EasyLevelMonster_2(),
+    new EasyLevelMonster_3()
+);
+
+ */
+private static final Random RANDOM = new Random();
 
 	public BattleLoc(Player player, String name, Obstacle obstacle) {
 		super(player);
@@ -15,13 +30,26 @@ public abstract class BattleLoc extends Location {
 		return true;
 
 	}
+	
+	/*
 	public boolean choiceRandomBM() {
-		
-		
-		return true;
-	}
-	
-	
+    try {
+        if (MONSTER_LIST.isEmpty()) {
+            System.out.println("Canavar listesi boş!");
+            return false;
+        }
+        
+        int randomIndex = RANDOM.nextInt(MONSTER_LIST.size());
+        EasyLevelMonster selectedMonster = MONSTER_LIST.get(randomIndex);
+        System.out.println("Rastgele seçilen canavar: " + selectedMonster.getMonsterName());
+        this.obstacle = selectedMonster;
+        return true;
+    } catch (Exception e) {
+        System.out.println("Canavar seçiminde bir hata oluştu: " + e.getMessage());
+        return false;
+    }
+}
+	*/
 	public void introBattle () {
 		String introBattleStory = "Aetheria'nın Efsane Yolculuğu"
 				+ "Bir zamanlar Aetheria topraklarında, kadim kehanetler ve unutulmuş mitler arasında, "

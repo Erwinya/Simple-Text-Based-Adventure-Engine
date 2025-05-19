@@ -3,11 +3,12 @@ import com.halukkilincer.adventure.characters.Player;
 import com.halukkilincer.adventure.launcher.Main;
 import com.halukkilincer.adventure.map.SafeHouse;
 import com.halukkilincer.adventure.map.ToolStore;
-
+import com.halukkilincer.adventure.utils.Location;
 import java.util.Scanner;
 
 public class Game implements AutoCloseable {
 	Player player = new Player();
+	Location location ;
 	Scanner scanner = new Scanner(System.in);
 
 	public void login() throws InterruptedException {

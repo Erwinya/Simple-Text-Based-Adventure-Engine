@@ -2,43 +2,24 @@ package com.halukkilincer.adventure.launcher;
 
 import com.halukkilincer.adventure.engine.Game;
 import com.halukkilincer.adventure.ui.GameFrame;
-
-/**
- *
- * @author Erwinya /halukkilincer/
- */
+import javax.swing.SwingUtilities;
+import java.util.logging.Logger;
+import java.util.logging.Level;
 
 public class Main {
+    private static final Logger LOGGER = Logger.getLogger(Main.class.getName());
 
-	public static void main(String[] args) {
-		
-		try (Game game = new Game()) {
-			game.login();
-			game.startGame();
-		} catch (InterruptedException e) {
-			System.err.println("Game was interrupted: " + e.getMessage());
-			Thread.currentThread().interrupt();
-		} catch (Exception e) {
-			System.err.println("An error occurred: " + e.getMessage());
-		}
-
-			/*
-
-		GameFrame gameFrame = new GameFrame();
-		gameFrame.setVisible(true);
-		gameFrame.setLocationRelativeTo(null);
-		gameFrame.setResizable(false);
-		gameFrame.setDefaultCloseOperation(GameFrame.EXIT_ON_CLOSE);
-		gameFrame.setTitle("Macera Oyunu");
-		gameFrame.setIconImage(gameFrame.getIconImage());
-		gameFrame.setFocusable(true);
-		gameFrame.requestFocus();
-		gameFrame.setFocusTraversalKeysEnabled(false);
-		gameFrame.startGame();
-
-*/
-
-	}
-
-
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            try (Game game = new Game()) {
+                game.login();
+                game.startGame();
+            } catch (InterruptedException e) {
+                LOGGER.log(Level.SEVERE, "Oyun kesintiye uğradı", e);
+                Thread.currentThread().interrupt();
+            } catch (Exception e) {
+                LOGGER.log(Level.SEVERE, "Beklenmeyen bir hata oluştu", e);
+            }
+        });
+    }
 }
