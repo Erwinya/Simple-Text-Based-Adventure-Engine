@@ -1,7 +1,7 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="Main" type="Application" factoryName="Application">
     <option name="ALTERNATIVE_JRE_PATH" value="24" />
-    <option name="MAIN_CLASS_NAME" value="com.halukkilincer.adventure.Launcher.Main" />
+    <option name="MAIN_CLASS_NAME" value="com.halukkilincer.adventure.launcher.Main" />
     <module name="Simple Text-Based Adventure Engine" />
     <extension name="coverage">
       <pattern>
