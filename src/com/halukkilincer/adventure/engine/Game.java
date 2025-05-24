@@ -43,9 +43,9 @@ public class Game implements AutoCloseable {
 				+ "\t Şifacı (HP:1700 Def:850 Attack:2300)\n"
 				+ "Kutsal ışığın savaşçısıydı. Yaralıları iyileştirir, lanetleri bozar ve müttefiklerini korurdu.\n "
 				+ "Ona dokunan her varlık, içindeki iyiliğin sıcaklığını hissederdi.\r\n"
-				+ "Bir gün, Void Lord adlı karanlık bir varlık Aetheria’yı yok etmeye ant içti. Kutsal Ebedi Kristal, "
+				+ "Bir gün, Void Lord adlı karanlık bir varlık Aetheria'yı yok etmeye ant içti. Kutsal Ebedi Kristal, "
 				+ "onun kötülüğünü durdurabilecek tek güçtü.\n "
-				+ "Dört kahraman, bu kadim kristali korumak ve Void Lord’u sonsuz karanlığa mühürlemek için güçlerini birleştirdi.\r\n"
+				+ "Dört kahraman, bu kadim kristali korumak ve Void Lord'u sonsuz karanlığa mühürlemek için güçlerini birleştirdi.\r\n"
 				+ "Ancak onların zaferi sadece kılıçlar ve büyülerle değil, birliktelik ve sadakatle mümkün olacaktı…\r\n"
 				+ "Şimdi, senin hikayen nasıl devam edecek? 🚀\r\n");
 		int tryTime = 5; // Maksimum deneme hakkı
@@ -147,42 +147,40 @@ public class Game implements AutoCloseable {
 			}}
 			*/
 		
-			
-
-			switch (inputChoiceMenu) {
-				case "1" -> {
-					
-						SafeHouse safeHouseLocation = new SafeHouse(player, player.getName());
-						Thread.sleep(3000);
-						System.out.println("Güvenli Eve gidiliyor..");
-						Thread.sleep(3000);
-						safeHouseLocation.getLocation();
-				}
-				case "2" -> {
-					Thread.sleep(3000);
-					System.out.println("mağazaya gidiliyor..");
-					Thread.sleep(3000);
-					ToolStore toolStoreLocation = new ToolStore(player, player.getName());
-					toolStoreLocation.getLocation();
-				}
-				case "3" -> {
-					Thread.sleep(3000);
-					System.out.println("savaş bölgesine gidildi");
-				}
-				case "q" -> {
-					Thread.sleep(3000);
-					System.out.println("oyundan çıkış yapılıyor");
-					break;
-				}
-				default -> {
-					Thread.sleep(3000);
-					System.out.println("Geçersiz giriş yapıldı. Tekrar deneyin.");
-				}
-			}
-
+		if (player.getCharName() == null || player.getCharName().isEmpty()) {
+			System.out.println("Karakter adı belirlenmedi! Önce karakter seçmelisiniz.");
+			return;
 		}
 
-	
+		switch (inputChoiceMenu) {
+			case "1" -> {
+				SafeHouse safeHouseLocation = new SafeHouse(player, player.getName());
+				Thread.sleep(3000);
+				System.out.println("Güvenli Eve gidiliyor..");
+				Thread.sleep(3000);
+				safeHouseLocation.getLocation();
+			}
+			case "2" -> {
+				Thread.sleep(3000);
+				System.out.println("mağazaya gidiliyor..");
+				Thread.sleep(3000);
+				ToolStore toolStoreLocation = new ToolStore(player, player.getName());
+				toolStoreLocation.getLocation();
+			}
+			case "3" -> {
+				Thread.sleep(3000);
+				System.out.println("savaş bölgesine gidildi");
+			}
+			case "q" -> {
+				Thread.sleep(3000);
+				System.out.println("oyundan çıkış yapılıyor");
+			}
+			default -> {
+				Thread.sleep(3000);
+				System.out.println("Geçersiz giriş yapıldı. Tekrar deneyin.");
+			}
+		}
+	}
 
 	@Override
 	public void close() throws Exception {

@@ -5,11 +5,11 @@ import com.halukkilincer.adventure.characters.Player;
 import com.halukkilincer.adventure.utils.NormalLoc;
 public class SafeHouse extends NormalLoc {
 	Scanner scanner = new Scanner(System.in);
-	private final int getFirstHealth = getPlayer().getFirstHealth();
+	private final int getFirstHealth;
 
 	public SafeHouse(Player player, String name) {
-		super(player, player.getName());
-
+		super(player, name);
+		this.getFirstHealth = player.getFirstHealth();
 	}
 
 	@Override
