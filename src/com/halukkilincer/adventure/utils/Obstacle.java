@@ -5,7 +5,7 @@ import java.util.Random;
 public abstract class Obstacle {
 	private String monsterName;
 	private int monsterDamage,awardCoin,health,spawn;
-	public Obstacle(String monsterName, int monsterDamage, int award, int health, int spawn) {
+	public Obstacle(String monsterName, int monsterDamage, int awardCoin, int health, int spawn) {
 	
 		this.monsterName = monsterName;
 		this.monsterDamage = monsterDamage;
@@ -34,10 +34,10 @@ public abstract class Obstacle {
 	public void setMonsterDamage(int monsterDamage) {
 		this.monsterDamage = monsterDamage;
 	}
-	public int getAward() {
+	public int getAwardCoin() {
 		return awardCoin;
 	}
-	public void setAward(int award) {
+	public void setAwardCoin(int award) {
 		this.awardCoin = award;
 	}
 	public int getHealth() {
