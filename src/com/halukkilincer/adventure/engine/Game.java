@@ -1,30 +1,25 @@
 package com.halukkilincer.adventure.engine;
-import com.halukkilincer.adventure.characters.Player;
-import com.halukkilincer.adventure.launcher.Main;
-import com.halukkilincer.adventure.map.SafeHouse;
-import com.halukkilincer.adventure.map.ToolStore;
+
+import com.halukkilincer.adventure.characters.*;
+import com.halukkilincer.adventure.map.*;
+import com.halukkilincer.adventure.ui.GameUI;
+import com.halukkilincer.adventure.utils.GameLogger;
+import com.halukkilincer.adventure.utils.GameSaveManager;
 import com.halukkilincer.adventure.utils.Location;
+
 import java.util.Scanner;
 
 public class Game implements AutoCloseable {
-	Player player = new Player();
-	Location location ;
-	Scanner scanner = new Scanner(System.in);
+	private AbstractCharacter player;
+	private final Scanner scanner;
+	private boolean isRunning;
 
-	public void login() throws InterruptedException {
-
-		System.out.println("Macera Oyununa Hoşgeldiniz...");
-		System.out.print("Oyuncu isminizi Giriniz : ");
-		String playerName = scanner.nextLine();
-
-		player.setName(playerName);
-
-		System.out.println("Karakter isminiz oluşturuluyor...");
-		Thread.sleep(3000);
-
-		selectChar();
+	public Game() {
+		this.scanner = new Scanner(System.in);
+		this.isRunning = true;
 	}
 
+<<<<<<< HEAD
 	public void selectChar() throws InterruptedException {
 
 		System.out.println("Merhaba " + player.getName());
@@ -78,80 +73,88 @@ public class Game implements AutoCloseable {
 		}
 		player.initializeCharacter();
 		startGame();
+=======
+	public void start() throws InterruptedException {
+		initializeGame();
+		gameLoop();
+>>>>>>> b4e5e80 (Refactor and reorganize game architecture)
 	}
 
-	public void startGame() throws InterruptedException {
-
-		System.out.println("Aetheria, son umudunu " + player.getName() + " isimli kahramana bağlamıştı. "
-				+ "Şimdi, kaderin kalemi senin ellerinde... Kahramanın yolculuğu başlıyor! 🚀✨\r\n");
-
-		Thread.sleep(3000);
-
-		gameMenu();
-
-	}
-
-	public void gameMenu() throws InterruptedException {
-		String gameMenuStringFirst = ("\tGecenin derin sessizliği, kadim topraklarda yankılanıyor.\n"
-				+ "Fırtına yaklaşırken, savaşın gölgesi giderek büyüyor.\n"
-				+ "Ancak kaderin yazılacağı bu anda, seçim senin ellerinde…\n" + "\t🏠 1. Eve Dön ve Dinlen\n"
-				+ "Zırhın yıpranmış, bedenin yara içinde olabilir.\n"
-				+ "Evin sıcaklığı, savaşın acımasız soğuğuna karşı tek sığınağın.\n"
-				+ "Birkaç saatlik huzur, yaralarını iyileştirecek, gücünü yeniden toparlayacak.\n"
-				+ "Belki de rüyalarında geleceğin ipuçlarını göreceksin…\n"
-				+ "\t🛒 2. Mağazaya Git ve Destansı Eşyalar Satın Al\n" + "Kaderini şekillendirecek silahlar burada.\n"
-				+ "Altınlarını sayarken, raflarda parlayan kutsal kılıçlar,\n"
-				+ "büyülü tılsımlar ve efsanevi zırhlar seni bekliyor.\n"
-				+ "Doğru seçim, gelecekteki savaşını kazanmana yardımcı olacak.\n"
-				+ "Ancak dikkatli ol ! her eşyanın bir bedeli var.\n"
-				+ "\t⚔️ 3. Savaş Meydanına Çık ve Karanlık Canavarlarla Yüzleş !\n"
-				+ "Karanlığın güçleri artık durdurulamaz hale geldi.\n" + "Savaş meydanında bekleyen yaratıklar,\n"
-				+ "korkunun vücut bulmuş hali. Çelik gibi sert durmalı,\n"
-				+ "büyünün gücüne güvenmeli ve sadık ruhunu korumalısın.\n"
-				+ "Burada yenilgi, unutulmaya yüz tutmuş bir kahraman demek…\n"
-				+ "Ama zafer? İşte o, tarihin satırlarına yazılacak.\n"
-				+ "\tVe şimdi… Hikayen nasıl devam edecek? 🚀✨(1-2-3 arasında seçim yapabilirsin)\n"
-				+ "\t\tOyundan çıkmak için q tuşuna basabilirsin.\n" + "Tercihin nedir ? : ");
-		System.out.print(gameMenuStringFirst);
-		String inputChoiceMenu = scanner.nextLine();
-/*
-		while (true) {
-
-			String gameMenuStringSecond = ("\n\t🏠 1. Eve Dön ve Dinlen\n\r\n"
-
-					+ "\tZırhın yıpranmış, bedenin yara içinde olabilir.\n\r"
-					+ "\tEvin sıcaklığı, savaşın acımasız soğuğuna karşı tek sığınağın.\n\r"
-					+ "\tBirkaç saatlik huzur, yaralarını iyileştirecek, gücünü yeniden toparlayacak.\n\r"
-					+ "\tBelki de rüyalarında geleceğin ipuçlarını göreceksin…\n\r"
-					+ "\t🛒 2. Mağazaya Git ve Destansı Eşyalar Satın Al\n\r\n"
-					+ "\tKaderini şekillendirecek silahlar burada.\n\r"
-					+ "\tAltınlarını sayarken, raflarda parlayan kutsal kılıçlar,\n\r"
-					+ "\tbüyülü tılsımlar ve efsanevi zırhlar seni bekliyor.\n\r"
-					+ "\tDoğru seçim, gelecekteki savaşını kazanmana yardımcı olacak.\n\r"
-					+ "\tAncak dikkatli ol ! her eşyanın bir bedeli var.\n\r"
-					+ "\t⚔️ 3. Savaş Meydanına Çık ve Karanlık Canavarlarla Yüzleş !\n\r\n"
-					+ "\tKaranlığın güçleri artık durdurulamaz hale geldi.\n\r"
-					+ "\tSavaş meydanında bekleyen yaratıklar,\n\r"
-					+ "\tkorkunun vücut bulmuş hali. Çelik gibi sert durmalı,\n\r"
-					+ "\tbüyünün gücüne güvenmeli ve sadık ruhunu korumalısın.\n\r"
-					+ "\tBurada yenilgi, unutulmaya yüz tutmuş bir kahraman demek…\n\r"
-					+ "\tAma zafer? İşte o, tarihin satırlarına yazılacak.\n\r"
-					+ "\tVe şimdi… Hikayen nasıl devam edecek? 🚀✨(1-2-3 arasında seçim yapabilirsin)\n\r\n"
-					+ "\t\tOyundan çıkmak için q tuşuna basabilirsin.\n\r\n" + "Tercihin nedir ? : ");
-			String inputChoiceMenu2 = scanner.nextLine();
-
-			if (player.getCharName() == null || player.getCharName().isEmpty()) {
-				System.out.println("Karakter adı belirlenmedi! Önce karakter seçmelisiniz.");
+	private void initializeGame() throws InterruptedException {
+		// Load saved game if exists
+		if (GameSaveManager.saveExists()) {
+			System.out.println("\nKaydedilmiş oyun bulundu. Yüklemek ister misiniz? (E/H)");
+			if (scanner.nextLine().equalsIgnoreCase("E")) {
+				loadGame();
 				return;
+			}
+		}
 
-			}}
-			*/
+		// Create new game
+		String playerName = GameUI.getPlayerName();
+		String characterChoice = GameUI.showCharacterSelection();
 		
+<<<<<<< HEAD
 		if (player.getCharName() == null || player.getCharName().isEmpty()) {
 			System.out.println("Karakter adı belirlenmedi! Önce karakter seçmelisiniz.");
 			return;
+=======
+		switch (characterChoice.toLowerCase()) {
+			case "s" -> player = new Warrior(playerName);
+			case "a" -> player = new Assassin(playerName);
+			case "b" -> player = new Mage(playerName);
+			case "h" -> player = new Healer(playerName);
+			case "q" -> {
+				isRunning = false;
+				return;
+			}
+			default -> {
+				System.out.println("Geçersiz karakter seçimi! Oyun kapatılıyor...");
+				isRunning = false;
+				return;
+			}
 		}
 
+		GameLogger.log("New game started with character: " + player.getCharacterType());
+		System.out.println(player.getDescription());
+		Thread.sleep(3000);
+	}
+
+	private void gameLoop() throws InterruptedException {
+		while (isRunning) {
+			String choice = GameUI.showMainMenu();
+			Location location = null;
+
+			switch (choice) {
+				case "1" -> location = new SafeHouse(player);
+				case "2" -> location = new ToolStore(player);
+				case "3" -> location = new ShadowForest(player);
+				case "4" -> location = new DarkCaverns(player);
+				case "5" -> location = new VoidRealmPortal(player);
+				case "6" -> saveGame();
+				case "q" -> {
+					System.out.println("\n�� Oyundan çıkış yapılıyor...");
+					isRunning = false;
+					return;
+				}
+				default -> {
+					System.out.println("\n❌ Geçersiz seçim!");
+					continue;
+				}
+			}
+
+			if (location != null) {
+				if (!location.getLocation()) {
+					System.out.println("\n💀 Oyun Bitti!");
+					isRunning = false;
+					return;
+				}
+			}
+>>>>>>> b4e5e80 (Refactor and reorganize game architecture)
+		}
+	}
+
+<<<<<<< HEAD
 		switch (inputChoiceMenu) {
 			case "1" -> {
 				SafeHouse safeHouseLocation = new SafeHouse(player, player.getName());
@@ -179,16 +182,36 @@ public class Game implements AutoCloseable {
 				Thread.sleep(3000);
 				System.out.println("Geçersiz giriş yapıldı. Tekrar deneyin.");
 			}
+=======
+	private void saveGame() {
+		try {
+			GameSaveManager.saveGame(player);
+			System.out.println("\n✨ Oyun başarıyla kaydedildi!");
+		} catch (Exception e) {
+			System.out.println("\n❌ Oyun kaydedilemedi: " + e.getMessage());
+			GameLogger.logError("Failed to save game", e);
+		}
+	}
+
+	private void loadGame() {
+		try {
+			GameSaveManager.loadGame(player);
+			System.out.println("\n✨ Oyun başarıyla yüklendi!");
+		} catch (Exception e) {
+			System.out.println("\n❌ Oyun yüklenemedi: " + e.getMessage());
+			GameLogger.logError("Failed to load game", e);
+			isRunning = false;
+>>>>>>> b4e5e80 (Refactor and reorganize game architecture)
 		}
 	}
 
 	@Override
-	public void close() throws Exception {
+	public void close() {
 		if (scanner != null) {
 			scanner.close();
 		}
+		GameLogger.log("Game closed");
 	}
-	
 }
 
 

@@ -1,19 +1,29 @@
 package com.halukkilincer.adventure.items;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class Inventory  {
-
+public class Inventory {
 	private boolean dungeonKey;
-	private int potionHP, damage, armour, charBodyArmour,charWeapon;
+	private boolean forestScroll;
+	private boolean ancientStone;
+	private int money;
+	private List<String> rareItems;
+	private boolean hasWeapon;
+	private boolean hasArmor;
+	private int weaponDamage;
+	private int armorDefense;
 
 	public Inventory() {
-
 		this.dungeonKey = false;
-		this.charBodyArmour = 0;
-		this.charWeapon = 0;
-		this.potionHP = 0;
-		this.damage = 0;
-		this.armour = 0;
+		this.forestScroll = false;
+		this.ancientStone = false;
+		this.money = 100; // Starting money
+		this.rareItems = new ArrayList<>();
+		this.hasWeapon = false;
+		this.hasArmor = false;
+		this.weaponDamage = 0;
+		this.armorDefense = 0;
 	}
 
 	public boolean isDungeonKey() {
@@ -23,55 +33,63 @@ public class Inventory  {
 	public void setDungeonKey(boolean dungeonKey) {
 		this.dungeonKey = dungeonKey;
 	}
-
-
-	public int isCharBodyArmour() {
-		return charBodyArmour;
-	}
-
-	public void setCharBodyArmour(int charBodyArmour) {
-		this.charBodyArmour = charBodyArmour;
-	}
-
 	
-	public int isCharWeapon() {
-		return charWeapon;
+	public boolean isForestScroll() {
+		return forestScroll;
 	}
 
-	public void setCharWeapon(int charWeapon) {
-		this.charWeapon = charWeapon;
+	public void setForestScroll(boolean forestScroll) {
+		this.forestScroll = forestScroll;
 	}
 
-	public int getPotionHP() {
-		return potionHP;
+	public boolean isAncientStone() {
+		return ancientStone;
 	}
 
-	public void setPotionHP(int potionHP) {
-		this.potionHP = potionHP;
+	public void setAncientStone(boolean ancientStone) {
+		this.ancientStone = ancientStone;
 	}
 
-	public int getDamage() {
-		return damage;
+	public int getMoney() {
+		return money;
 	}
 
-	public int getCharBodyArmour() {
-		return charBodyArmour;
+	public void setMoney(int money) {
+		this.money = money;
 	}
 
-	public int getCharWeapon() {
-		return charWeapon;
+	public void addRareItem(String item) {
+		if (item != null && !rareItems.contains(item)) {
+			rareItems.add(item);
+			System.out.println("\nNADİR EŞYA BULDUN: " + item + "!");
+			
+			if (item.equals("Kadim Taş")) {
+				System.out.println("Bu antik taş, eski bir medeniyetin sırlarını barındırıyor...");
+			} else if (item.equals("Orman Parşömeni")) {
+				System.out.println("Bu parşömende kadim ormanların gizli bilgelikleri yazılı...");
+			}
+		}
 	}
 
-	public void setDamage(int damage) {
-		this.damage = damage;
+	public List<String> getRareItems() {
+		return rareItems;
 	}
 
-	public int getArmour() {
-		return armour;
+	public int getWeaponDamage() {
+		return weaponDamage;
 	}
 
-	public void setArmour(int armour) {
-		this.armour = armour;
+	public void setWeaponDamage(int weaponDamage) {
+		this.weaponDamage = weaponDamage;
+		this.hasWeapon = true;
 	}
 
+	public int getArmorDefense() {
+		return armorDefense;
+	}
+
+	public void setArmorDefense(int armorDefense) {
+		this.armorDefense = armorDefense;
+		this.hasArmor = true;
+	}
 }
