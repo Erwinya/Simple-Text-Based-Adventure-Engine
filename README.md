@@ -1,70 +1,120 @@
 # Text-Based Adventure Game
 
-Bu proje, Java ile geliştirilmiş bir metin tabanlı macera oyunudur. Oyuncular farklı karakterler seçebilir, düşmanlarla savaşabilir, eşya toplayabilir ve Aetheria dünyasını kurtarmaya çalışabilirler.
+This project is a text-based adventure game developed in Java. Players can choose different characters, fight enemies, collect items, and try to save the world of Aetheria.
 
-## Özellikler
+## Features
 
-- 4 farklı karakter sınıfı (Savaşçı, Suikastçı, Büyücü, Şifacı)
-- 5 farklı lokasyon (Güvenli Ev, Ghua Pazarı, Gölgeler Ormanı, Karanlık Mağaralar, Boşluk Diyarı Kapısı)
-- 3 farklı düşman tipi (Void Minion, Shadow Beast, Void Lord)
-- Silah ve zırh sistemi
-- Para sistemi
-- Nadir eşya toplama sistemi
-- Can yenileme sistemi
-- Oyun kaydetme/yükleme sistemi
-- Detaylı olay kaydı
+- 4 different character classes (Warrior, Assassin, Mage, Healer)
+- 5 different locations (Safe House, Ghua Market, Shadow Forest, Dark Caverns, Void Realm Portal)
+- 3 different enemy types (Void Minion, Shadow Beast, Void Lord)
+- Weapon and armor system
+- Money system
+- Rare item collection system
+- Health regeneration system
+- Game save/load system
+- Detailed event logging
+- SOLID principles implementation
+- Clean Code practices
 
-## Gereksinimler
+## Requirements
 
-- Java 17 veya üzeri
+- Java 17 or higher
+- Maven 3.6 or higher
 
-## Kurulum
+## Installation
 
-1. Projeyi klonlayın:
+1. Clone the project:
 ```bash
 git clone https://github.com/yourusername/Simple-Text-Based-Adventure-Engine.git
 ```
 
-2. Proje dizinine gidin:
+2. Navigate to the project directory:
 ```bash
 cd Simple-Text-Based-Adventure-Engine
 ```
 
-3. Projeyi derleyin:
+3. Build the project with Maven:
 ```bash
-cd src
-javac com/halukkilincer/adventure/launcher/Game.java
+mvn clean package
 ```
 
-4. Oyunu başlatın:
+4. Run the game:
 ```bash
-java com.halukkilincer.adventure.launcher.Game
+java -jar target/text-adventure-1.0-SNAPSHOT.jar
 ```
 
-## Oyun Kontrolleri
+## Development
 
-- Menülerde gezinmek için 1-4 arası sayıları kullanın
-- Karakter seçimi için S, A, B, H tuşlarını kullanın
-- Savaş sırasında:
-  - Vurmak için V tuşuna basın
-  - Kaçmak için K tuşuna basın
+### Project Structure
+```
+src/
+├── main/
+│   ├── java/
+│   │   └── com/halukkilincer/adventure/
+│   │       ├── characters/    # Character classes
+│   │       ├── combat/        # Combat system
+│   │       ├── engine/        # Game engine
+│   │       ├── interfaces/    # Game interfaces
+│   │       ├── items/         # Item system
+│   │       ├── launcher/      # Game entry point
+│   │       ├── map/          # Game locations
+│   │       ├── ui/           # User interface
+│   │       └── utils/        # Utility classes
+│   └── resources/
+│       └── logback.xml       # Logging configuration
+├── test/
+│   └── java/                # Unit tests
+└── pom.xml                  # Maven configuration
+```
 
-## Oyun İpuçları
+### Design Patterns Used
+- Strategy Pattern (Combat System)
+- Factory Pattern (Character Creation)
+- Singleton Pattern (Game Manager)
+- Observer Pattern (Event System)
 
-1. Oyuna başlarken Güvenli Ev'de canınızı yenileyebilirsiniz
-2. Ghua Pazarı'ndan silah ve zırh satın alın
-3. Gölgeler Ormanı'ndan Orman Parşömeni'ni toplayın
-4. Karanlık Mağaralar'dan Kadim Taş'ı elde edin
-5. Son olarak Boşluk Diyarı Kapısı'nda Void Lord ile savaşın
+### SOLID Principles Implementation
+- Single Responsibility Principle: Each class has one specific responsibility
+- Open/Closed Principle: New character types and combat strategies can be added without modifying existing code
+- Liskov Substitution Principle: Character subtypes can be used in place of AbstractCharacter
+- Interface Segregation: Specific interfaces (ICombat, ILootable) for different behaviors
+- Dependency Inversion: High-level modules depend on abstractions
 
-## Katkıda Bulunma
+## Game Controls
 
-1. Bu depoyu fork edin
-2. Yeni bir branch oluşturun (`git checkout -b feature/amazing-feature`)
-3. Değişikliklerinizi commit edin (`git commit -m 'Add some amazing feature'`)
-4. Branch'inizi push edin (`git push origin feature/amazing-feature`)
-5. Bir Pull Request oluşturun
+- Use numbers 1-4 to navigate menus
+- Use S, A, B, H keys for character selection
+- During combat:
+  - Press V to attack
+  - Press K to run away
 
-## Lisans
+## Game Tips
 
-Bu proje MIT lisansı altında lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasına bakın.
+1. You can regenerate your health at the Safe House when starting the game
+2. Buy weapons and armor from the Ghua Market
+3. Collect the Forest Scroll from the Shadow Forest
+4. Obtain the Ancient Stone from the Dark Caverns
+5. Finally, fight the Void Lord at the Void Realm Portal
+
+## Contributing
+
+1. Fork this repository
+2. Create a new branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push your branch (`git push origin feature/amazing-feature`)
+5. Create a Pull Request
+
+## Testing
+
+Run the tests using Maven:
+```bash
+mvn test
+```
+
+## Logging
+
+Game events are logged to both console and `game.log` file. The logging level can be configured in `src/main/resources/logback.xml`.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more information.
